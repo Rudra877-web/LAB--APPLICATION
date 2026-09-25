@@ -1,0 +1,352 @@
+/* ============================================================
+   Design tokens - "Clinical Precision"
+   Palette grounded in a diagnostic lab: paper-white surfaces,
+   deep teal for trust/precision, warm amber used sparingly for
+   actions that need attention. Inter for clean data-dense UI,
+   tabular numerals on stat figures so columns of numbers align.
+   ============================================================ */
+:root {
+  --bg: #F5F8F7;
+  --surface: #FFFFFF;
+  --surface-sunk: #EEF3F1;
+  --ink: #16231F;
+  --muted: #5B6B66;
+  --border: #DDE6E2;
+
+  --primary: #0E6E5C;
+  --primary-dark: #0A4F42;
+  --primary-soft: #E4F2EE;
+
+  --accent: #D98A3D;
+  --accent-dark: #B96F27;
+
+  --danger: #C0392B;
+  --danger-soft: #FBEAE8;
+  --success: #1F8A55;
+  --success-soft: #E7F6ED;
+
+  --radius: 10px;
+  --shadow-sm: 0 1px 2px rgba(22, 35, 31, 0.06);
+  --shadow-md: 0 4px 16px rgba(22, 35, 31, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-feature-settings: "tnum" 1;
+}
+
+/* ---------------- Navbar ---------------- */
+.navbar {
+  background: var(--primary-dark);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.75rem;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.navbar .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.navbar nav { display: flex; gap: 1.5rem; }
+
+.navbar nav a {
+  color: rgba(255,255,255,0.72);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.navbar nav a.active { color: #fff; border-bottom-color: var(--accent); }
+.navbar nav a:hover { color: #fff; }
+
+.navbar .right { display: flex; align-items: center; gap: 0.9rem; font-size: 0.88rem; color: rgba(255,255,255,0.85); }
+
+/* ---------------- Layout ---------------- */
+.container { max-width: 1200px; margin: 0 auto; padding: 1.75rem 1.5rem; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  margin-bottom: 1.4rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.card h3 {
+  font-size: 1.02rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+/* ---------------- Setup banner ---------------- */
+.setup-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  background: #FFF7EC;
+  border: 1px solid #F0D6A8;
+  color: #7A4E11;
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.4rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.setup-banner svg { flex-shrink: 0; margin-top: 2px; color: var(--accent-dark); }
+.setup-banner code {
+  background: rgba(0,0,0,0.06);
+  padding: 0.05rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+/* ---------------- Stat cards ---------------- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  box-shadow: var(--shadow-sm);
+}
+.stat-card .icon-wrap {
+  width: 42px; height: 42px;
+  border-radius: 9px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.stat-card .num { font-size: 1.65rem; font-weight: 700; line-height: 1.1; color: var(--ink); }
+.stat-card .label { color: var(--muted); font-size: 0.83rem; margin-top: 2px; }
+
+/* ---------------- Buttons ---------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.15rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-family: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.15s, transform 0.05s;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-secondary { background: var(--surface-sunk); color: var(--ink); }
+.btn-secondary:hover { background: #E2EAE7; }
+.btn-danger { background: var(--danger); color: #fff; }
+.btn-danger:hover { background: #A5321F; }
+.btn-sm { padding: 0.35rem 0.7rem; font-size: 0.8rem; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.actions-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: center; }
+
+/* ---------------- Forms ---------------- */
+label { display: block; font-size: 0.83rem; font-weight: 600; margin-bottom: 0.3rem; color: var(--muted); }
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  margin-bottom: 0.95rem;
+  background: #fff;
+  color: var(--ink);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0 1.1rem;
+}
+
+.error-text {
+  color: var(--danger);
+  background: var(--danger-soft);
+  border-radius: 7px;
+  padding: 0.55rem 0.8rem;
+  font-size: 0.83rem;
+  margin-top: -0.6rem;
+  margin-bottom: 0.8rem;
+  display: none;
+}
+.error-text.show { display: block; }
+
+/* ---------------- Table ---------------- */
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+thead th {
+  background: var(--surface-sunk);
+  text-align: left;
+  padding: 0.65rem 0.7rem;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-transform: none;
+}
+tbody td { padding: 0.65rem 0.7rem; border-bottom: 1px solid var(--border); }
+tbody tr:hover { background: var(--surface-sunk); }
+.table-wrap { overflow-x: auto; }
+
+.badge { padding: 0.18rem 0.6rem; border-radius: 999px; font-size: 0.73rem; font-weight: 600; }
+.badge-active { background: var(--success-soft); color: var(--success); }
+.badge-inactive { background: var(--danger-soft); color: var(--danger); }
+
+.pagination { display: flex; gap: 0.5rem; justify-content: center; align-items: center; margin-top: 1.1rem; }
+
+.empty-state {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------------- Toast ---------------- */
+.toast {
+  position: fixed; bottom: 20px; right: 20px;
+  padding: 0.75rem 1.1rem; border-radius: 8px; color: #fff;
+  opacity: 0; transform: translateY(10px); transition: all 0.25s;
+  z-index: 999; font-size: 0.88rem; pointer-events: none;
+  box-shadow: var(--shadow-md);
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast-success { background: var(--success); }
+.toast-error { background: var(--danger); }
+
+/* ---------------- Modal ---------------- */
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(22, 35, 31, 0.45);
+  display: none; align-items: center; justify-content: center; z-index: 998; padding: 1rem;
+}
+.modal-backdrop.show { display: flex; }
+.modal { background: #fff; border-radius: var(--radius); padding: 1.6rem; max-width: 420px; width: 100%; box-shadow: var(--shadow-md); }
+
+/* ---------------- Login ---------------- */
+.login-wrap { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: var(--bg); }
+.login-box { width: 100%; max-width: 380px; }
+.login-box .brand-mark {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: var(--primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1rem;
+}
+.login-box h1 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.2rem; text-align: center; letter-spacing: -0.01em; }
+.login-box p.sub { text-align: center; color: var(--muted); margin-bottom: 1.6rem; font-size: 0.88rem; }
+
+@media print {
+  .navbar, .actions-row, .no-print, .setup-banner { display: none !important; }
+  .container { padding: 0; }
+  .card { box-shadow: none; border: none; }
+}
+
+@media (max-width: 640px) {
+  .navbar { flex-direction: column; align-items: flex-start; }
+  .navbar nav { gap: 1rem; }
+}
+
+/* ---------------- TAT List (new section, reuses existing tokens) ---------------- */
+.tat-list {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.tat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+  flex-wrap: wrap;
+}
+.tat-row:last-child { border-bottom: none; }
+.tat-row:hover { background: var(--surface-sunk); }
+
+.tat-row-head {
+  background: var(--surface-sunk);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.tat-row-head:hover { background: var(--surface-sunk); }
+
+.tat-name { font-weight: 600; color: var(--ink); font-size: 0.92rem; }
+
+.segmented {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #fff;
+}
+.segmented button {
+  background: transparent;
+  border: none;
+  padding: 0.48rem 1rem;
+  font-size: 0.82rem;
+  font-family: inherit;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.segmented button + button { border-left: 1px solid var(--border); }
+.segmented button:hover:not(.active) { background: var(--surface-sunk); }
+.segmented button.active { background: var(--primary); color: #fff; }
+.segmented button:disabled { opacity: 0.6; cursor: wait; }
+
+@media (max-width: 580px) {
+  .tat-row { flex-direction: column; align-items: flex-start; }
+  .tat-row-head { display: none; }
+  .segmented { width: 100%; }
+  .segmented button { flex: 1; text-align: center; }
+}
